@@ -33,25 +33,17 @@ public class DatabaseOperations {
     
   
     // use autowired (default) jdbcTemplate on spring.datasource...
-    public SqlRowSet getRs_jdbcAutowired() {
+    public SqlRowSet getRs_jdbcAutowired_table() {
         String sql = "SELECT * from product";
         SqlRowSet rs = jdbcAutowired.queryForRowSet(sql);
         return rs;
     }  
     
-    
-    public SqlRowSet queryDatabaseView1() {
-        String sql = "SELECT month_abbr, sheet_name, sheet_grid, cells, rownum from z_rpt_xlsx_grid_cell where sheet_name = 'NAOC'";
+    public SqlRowSet getRs_jdbcAutowired_view() {
+        String sql = "select * from myView1";
         SqlRowSet rs = jdbcAutowired.queryForRowSet(sql);
         return rs;
     }  
-    
-    public SqlRowSet queryDatabaseView2() {
-        String sql = "SELECT month_abbr, sheet_name, sheet_grid, cells, rownum from z_rpt_xlsx_grid_cell where month_abbr = 'NOV'";
-        SqlRowSet rs = jdbcAutowired.queryForRowSet(sql);
-        return rs;
-    }    
-  
     
     // set ds from dsA properties and assign to jdbcA
     public void set_jdbcA() {
@@ -86,14 +78,14 @@ public class DatabaseOperations {
     
     public SqlRowSet getRs_jdbcB() {
     	
-        String sql = "select * from book";
+        String sql = "select * from parent";
         SqlRowSet rs = jdbcB.queryForRowSet(sql);
         return rs;   
     }          
    
     public List<Map<String, Object>> getMapList_jdbcB() {
     	
-        String sql = "select * from book";
+        String sql = "select * from parent";
         
         System.out.println(" "); 
         List<Map<String, Object>> list = jdbcB.queryForList(sql);
