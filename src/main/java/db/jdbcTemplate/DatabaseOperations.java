@@ -33,13 +33,12 @@ public class DatabaseOperations {
     
   
     // use autowired (default) jdbcTemplate on spring.datasource...
-    public SqlRowSet getRs_jdbcAutowired() {
+    public SqlRowSet getRs_jdbcAutowired_table() {
         String sql = "SELECT * from product";
         SqlRowSet rs = jdbcAutowired.queryForRowSet(sql);
         return rs;
     }  
     
-   
     // set ds from dsA properties and assign to jdbcA
     public void set_jdbcA() {
     	

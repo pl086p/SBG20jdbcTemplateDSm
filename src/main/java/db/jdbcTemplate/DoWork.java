@@ -21,21 +21,33 @@ public class DoWork {
 	}
 
 	public void showDataFrom_defaultDatasource() {
-	    SqlRowSet rs = dbOperation.getRs_jdbcAutowired(); 
+		
+	    SqlRowSet rs;
 	    
 	    System.out.println("\n - showDataFrom_defaultDatasource(): autowired to default data source (schema public) \n");   
+
+	    rs = dbOperation.getRs_jdbcAutowired_table(); 
+	    System.out.println("\n = getRs_jdbcAutowired_table: ");   
         while (rs.next()) {
-        	System.out.println(" - " + rs.getString("name"));   
+        	System.out.println("    - " + rs.getString("name"));   
         }
-        
+
 	    rs.last();
 	    System.out.println("\n - showDataFrom_defaultDatasource - row count: " + rs.getRow() + "\n");
+	    
+	    rs = dbOperation.getRs_jdbcAutowired_table(); 
+	    System.out.println("\n = getRs_jdbcAutowired_view(): ");   
+        while (rs.next()) {
+        	System.out.println("    - " + rs.getString("name"));   
+        }
+
 	}	    
  
 	// schema1.customer
 	public void showDataFrom_dsA() {
 		
  		dbOperation.set_jdbcA();
+ 		
 	    SqlRowSet rs = dbOperation.getRs_jdbcA(); 
 	    
         System.out.println("\n - showDataFrom_dsA (mySchema1) - getRs_jdbcA():" + "\n");   
